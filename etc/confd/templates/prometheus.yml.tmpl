@@ -43,3 +43,11 @@ scrape_configs:
     - targets:
       - rancher-exporter:9173
 {{ end }}
+{{ if eq (getenv "SETUP_RANCHER_CRONTAB_EXPORTER") "true" }}
+  - job_name: rancher-container-crontab
+    scrape_interval: 15s
+    scrape_timeout: 10s
+    static_configs:
+    - targets:
+      - container-crontab.container-crontab.rancher.internal:9191
+{{ end }}
