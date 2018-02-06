@@ -7,4 +7,4 @@ keys = [
   "/self/container/primary_ip",
   "/self/service/metadata",
 ]
-#reload_cmd = "curl -s -XPOST prometheus:9090/-/reload"
+reload_cmd = "curl -s -X POST prometheus:9090/-/reload"
