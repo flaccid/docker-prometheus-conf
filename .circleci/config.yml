@@ -1,0 +1,26 @@
+version: 2
+
+machine:
+  services:
+    - docker
+
+jobs:
+  build:
+    docker:
+      - image: docker
+    branches:
+      only:
+        - master
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: docker info
+      - run:
+          name: Build docker image
+          command: |
+            docker build -t flaccid/prometheus-conf:latest .
+      - deploy:
+          name: Push docker image to Docker Hub
+          command: |
+            docker login --username=$DOCKER_USER --password=$DOCKER_PASSWORD
+            docker push flaccid/prometheus-conf:latest
