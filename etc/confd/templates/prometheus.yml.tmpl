@@ -51,3 +51,4 @@ scrape_configs:
     - targets:
       - container-crontab.container-crontab.rancher.internal:9191
 {{ end }}
+{{ getv "/self/service/metadata/extra_scrape_configs" ""}}
