@@ -16,4 +16,8 @@ COPY etc/confd /etc/confd
 
 VOLUME /etc/prometheus
 
+ENV PATH=/opt/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+WORKDIR /opt/bin
+
 CMD ["--backend", "env"]
